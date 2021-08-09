@@ -63,7 +63,7 @@ export const logIn = async(req,res)=>{
                     expires: new Date(Date.now() + (60000*60)),
                     path: "/",
                     httpOnly: true,
-                    secure: false,
+                    secure: true,
                     sameSite: "None",
                   });
                 res.send({"message":"green","_id":user._id});
