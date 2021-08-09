@@ -64,7 +64,7 @@ export const logIn = async(req,res)=>{
                     path: "/",
                     httpOnly: true,
                     secure: true,
-                    sameSite: "strict",
+                    sameSite: "none",
                   });
                 res.send({"message":"green","_id":user._id});
             }else{
