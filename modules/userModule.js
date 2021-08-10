@@ -64,7 +64,7 @@ export const logIn = async(req,res)=>{
                     path: "/",
                     httpOnly: true,
                     secure: true,
-                    sameSite: "None", //for local host
+                    SameSite: "None", //for local host
                     // for https sameSite: "None",
                   });
                 res.send({"message":"green","_id":user._id});
