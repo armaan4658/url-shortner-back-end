@@ -29,7 +29,7 @@ export const signUp = async(req,res)=>{
             await verify.save();
             const sub="Confirmation e-mail";
             const link = await bcrypt.genSalt(4);
-            const href=`http://localhost:3000/verifyaccount/${savedUser._id}`;
+            const href=`https://url-shortner-front-end-ak.netlify.app/verifyaccount/${savedUser._id}`;
             const message = `<b>Your one time password is : ${otp}</b><br/>
             Click the link below to verify your account<br/>
             <a href=${href}>${link} </a>`
@@ -64,7 +64,8 @@ export const logIn = async(req,res)=>{
                     path: "/",
                     httpOnly: true,
                     secure: true,
-                    sameSite: "None",
+                    sameSite: "None", //for local host
+                    // for https sameSite: "None",
                   });
                 res.send({"message":"green","_id":user._id});
             }else{
@@ -192,7 +193,7 @@ export const passwordResetLink = async(req,res)=>{
         if(user){
             const salt = await bcrypt.genSalt(3);
             const sub ="Password reset";
-            const href=`http://localhost:3000/passwordreset/${user._id}`;
+            const href=`https://url-shortner-front-end-ak.netlify.app/passwordreset/${user._id}`;
             const message = `<b>Click the link below to reset your password : </b><br/>
             <a href=${href}>${salt} </a>`;
             //sending e-mail
