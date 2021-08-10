@@ -12,8 +12,8 @@ mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true});
 const con = mongoose.connection;
 con.on("open",()=>console.log("MongoDb is connected"));
 app.use(express.json());
-// app.use(cors({credentials:true,origin:'https://url-shortner-front-end-ak.netlify.app/'}));
-app.use(cors());
+app.use(cors({credentials:true,origin:'https://url-shortner-front-end-ak.netlify.app'}));
+// app.use(cors());
 app.use(cookieParser());
 app.get("/",(req,res)=>{
     res.send({"message":"Server is up"});
