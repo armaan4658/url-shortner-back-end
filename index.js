@@ -12,8 +12,12 @@ mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true});
 const con = mongoose.connection;
 con.on("open",()=>console.log("MongoDb is connected"));
 app.use(express.json());
-app.use(cors({credentials:true,origin:'https://url-shortner-front-end-ak.netlify.app'}));
-// app.use(cors());
+//for netlify
+// app.use(cors({credentials:true,origin:'https://url-shortner-front-end-ak.netlify.app'}));
+app.use(cors({credentials:true,origin:'https://gallant-gates-d1c4e3.netlify.app'}));
+//for local host
+// app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+
 app.use(cookieParser());
 app.get("/",(req,res)=>{
     res.send({"message":"Server is up"});
