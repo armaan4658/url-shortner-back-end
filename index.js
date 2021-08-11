@@ -14,7 +14,7 @@ con.on("open",()=>console.log("MongoDb is connected"));
 app.use(express.json());
 //for netlify
 // app.use(cors({credentials:true,origin:'https://url-shortner-front-end-ak.netlify.app'}));
-app.use(cors({credentials:true,origin:'https://gallant-gates-d1c4e3.netlify.app'}));
+app.use(cors({credentials:true,origin:'https://gracious-ramanujan-47546f.netlify.app'}));
 //for local host
 // app.use(cors({credentials:true,origin:'http://localhost:3000'}));
 
