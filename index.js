@@ -18,7 +18,7 @@ app.use(express.json());
 // app.use(cors({credentials:true,origin:allowedOrigin}));
 app.use(function (req, res, next) {
 
-  var allowedDomains = ['http://localhost:3000','https://url-shortner-front-end-ak.netlify.app' ];
+  var allowedDomains = ['http://localhost:3000','https://url-shortner-front-end-ak.netlify.app','https://main.d3729sisnrd7ao.amplifyapp.com'];
   var origin = req.headers.origin;
   if(allowedDomains.indexOf(origin) > -1){
     res.setHeader('Access-Control-Allow-Origin', origin);
