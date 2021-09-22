@@ -14,8 +14,22 @@ const con = mongoose.connection;
 con.on("open",()=>console.log("MongoDb is connected"));
 app.use(express.json());
 //for netlify
-const allowedOrigin = "https://url-shortner-front-end-ak.netlify.app" || "http://localhost:3000";
-app.use(cors({credentials:true,origin:allowedOrigin}));
+// const allowedOrigin = "https://url-shortner-front-end-ak.netlify.app" || "http://localhost:3000";
+// app.use(cors({credentials:true,origin:allowedOrigin}));
+app.use(function (req, res, next) {
+
+  var allowedDomains = ['http://localhost:3000','https://url-shortner-front-end-ak.netlify.app' ];
+  var origin = req.headers.origin;
+  if(allowedDomains.indexOf(origin) > -1){
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Accept');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  next();
+})
 
 app.use(cookieParser());
 app.get("/",(req,res)=>{
